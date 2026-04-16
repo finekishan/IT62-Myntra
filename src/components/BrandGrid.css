@@ -1,0 +1,80 @@
+.brandGrid-section {
+  width: 100%;
+  margin: 32px 0;
+}
+
+.brandGrid-title {
+  font-size: 28px;
+  font-weight: 650;
+  color: #484c5f;
+  margin: 0 30px 20px;
+  letter-spacing: 3px;
+}
+
+.brandGrid {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+}
+
+.brandGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.brandGrid-card-wrapper {
+  width: calc(100% / 6);
+  min-width: calc(100% / 6);
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+/* override card width inside brandGrid */
+.brandGrid-card-wrapper .card {
+  width: 100%;
+  min-width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .brandGrid-card-wrapper {
+    width: calc(100% / 3);
+    min-width: calc(100% / 3);
+  }
+}
+
+@media (max-width: 600px) {
+  .brandGrid-card-wrapper {
+    width: calc(100% / 2);
+    min-width: calc(100% / 2);
+  }
+
+  .brandGrid-title {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    margin: 0 16px 14px;
+  }
+}
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.slider-dot.active {
+  background: #ff3f6c;
+  transform: scale(1.3);
+}

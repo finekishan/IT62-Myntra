@@ -1,0 +1,57 @@
+.productGrid-section {
+  width: 100%;
+  margin: 32px 0;
+}
+
+.productGrid-title {
+  font-size: 28px;
+  font-weight: 650;
+  color: #484c5f;
+  margin: 30px 30px 50px;
+  letter-spacing: 3px;
+}
+
+.productGrid {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  width: 100%;
+  scroll-snap-type: x mandatory;
+}
+
+.productGrid::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.slider-dot.active {
+  background: #ff3f6c;
+  transform: scale(1.3);
+}
+
+@media (max-width: 600px) {
+  .productGrid-title {
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    margin: 16px 12px 14px;
+  }
+}

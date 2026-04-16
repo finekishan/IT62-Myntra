@@ -1,0 +1,295 @@
+.bankOffersSection {
+  width: 100%;
+  background: #ffffff;
+  padding: 0 0 20px;
+}
+
+.bankOffersGrid {
+  width: min(1280px, calc(100% - 92px));
+  margin: 0 auto 12px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.bankOfferCard {
+  min-height: 132px;
+  background: #fdfbf6;
+  border: 1px solid #f1e4c5;
+  border-radius: 0 0 24px 24px;
+  position: relative;
+  display: grid;
+  grid-template-columns: 360px 2px 1fr 68px;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bankOfferLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px 16px 22px 24px;
+}
+
+.bankLogoBox {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bankLogoImg {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 6px;
+}
+
+.bankNameText {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.8px;
+  padding: 13px 20px;
+  white-space: nowrap;
+}
+
+.bankLogoBox.hdfc { background: #0d3d8f; }
+.bankLogoBox.sbi  { background: #1f5dbf; }
+.bankLogoBox.icici{ background: #a34b1e; }
+.bankLogoBox.axis { background: #8e1356; }
+
+.bankLogoBox .bankNameText { background: inherit; }
+
+.bankDivider {
+  width: 2px;
+  height: 82px;
+  background: #cdc6b8;
+  justify-self: center;
+}
+
+.bankOfferContent {
+  padding: 10px 24px 10px 26px;
+}
+
+.bankOfferContent h3 {
+  margin: 0 0 8px;
+  color: #1d2240;
+  font-size: 38px;
+  line-height: 1.08;
+  font-weight: 700;
+}
+
+.bankOfferContent p {
+  margin: 0;
+  color: #565a69;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 400;
+}
+
+.bankApplyTag {
+  position: relative;
+  height: 100%;
+  border-left: 1px dashed #ead9b2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #66656b;
+  font-size: 18px;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  background: #fdfbf6;
+}
+
+.bankApplyTag::before,
+.bankApplyTag::after {
+  content: "";
+  position: absolute;
+  left: -14px;
+  width: 28px;
+  height: 28px;
+  background: #ffffff;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.bankApplyTag::before {
+  top: -14px;
+}
+
+.bankApplyTag::after {
+  bottom: -14px;
+}
+
+.bankRightPerforation {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%) rotate(180deg);
+  width: 20px;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bankRightPerforation span {
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: block;
+}
+
+.budgetHeadingStrip {
+  width: min(1280px, calc(100% - 92px));
+  height: 98px;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #ffffff 0%, #e1ca7a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.budgetHeadingStrip h2 {
+  margin: 0;
+  color: #1e3f86;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -1px;
+}
+
+.bankLoadingText {
+  width: min(1280px, calc(100% - 92px));
+  margin: 10px auto 0;
+  color: #5a6070;
+  font-size: 14px;
+}
+
+.bankDots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.bankDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #cdc6b8;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.bankDot.active {
+  background: #ff3f6c;
+  transform: scale(1.2);
+}
+
+/* ── 3D Flip Animation ── */
+.bankFlipWrapper {
+  perspective: 1000px;
+  width: 100%;
+}
+
+.bankFlipWrapper.flipping {
+  animation: cardFlip3D 0.4s ease-in-out;
+}
+
+@keyframes cardFlip3D {
+  0%   { transform: rotateX(0deg);    opacity: 1; }
+  50%  { transform: rotateX(90deg);   opacity: 0; }
+  100% { transform: rotateX(0deg);    opacity: 1; }
+}
+
+@media (max-width: 1200px) {
+  .bankOffersGrid,
+  .budgetHeadingStrip,
+  .bankLoadingText {
+    width: calc(100% - 40px);
+  }
+
+  .bankOfferCard {
+    grid-template-columns: 290px 2px 1fr 58px;
+  }
+
+  .bankNameText {
+    font-size: 24px;
+  }
+
+  .bankOfferContent h3 {
+    font-size: 30px;
+  }
+
+  .bankOfferContent p {
+    font-size: 22px;
+  }
+
+  .budgetHeadingStrip h2 {
+    font-size: 46px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bankOffersGrid,
+  .budgetHeadingStrip,
+  .bankLoadingText {
+    width: calc(100% - 24px);
+  }
+
+  .bankOfferCard {
+    grid-template-columns: 1fr;
+    border-radius: 0 0 18px 18px;
+    padding: 16px;
+  }
+
+  .bankDivider,
+  .bankApplyTag,
+  .bankRightPerforation {
+    display: none;
+  }
+
+  .bankOfferLeft,
+  .bankOfferContent {
+    padding: 0;
+    text-align: center;
+  }
+
+  .bankOfferLeft {
+    margin-bottom: 12px;
+  }
+
+  .bankLogoBox {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .bankNameText {
+    font-size: 22px;
+    padding: 10px 16px;
+  }
+
+  .bankOfferContent h3 {
+    font-size: 26px;
+  }
+
+  .bankOfferContent p {
+    font-size: 18px;
+  }
+
+  .budgetHeadingStrip {
+    height: 72px;
+  }
+
+  .budgetHeadingStrip h2 {
+    font-size: 32px;
+    text-align: center;
+  }
+}
