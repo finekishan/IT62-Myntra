@@ -11,17 +11,15 @@ export function AppProvider({ children }) {
   const [user,     setUser]     = useState(() => load('mn_user', null))
   const [wishlist, setWishlist] = useState(() => load('mn_wishlist', []))
   const [cart,     setCart]     = useState(() => load('mn_cart', []))
+  const [orders,   setOrders]   = useState(() => load('mn_orders', []))
 
   useEffect(() => { localStorage.setItem('mn_user',     JSON.stringify(user))     }, [user])
   useEffect(() => { localStorage.setItem('mn_wishlist', JSON.stringify(wishlist)) }, [wishlist])
   useEffect(() => { localStorage.setItem('mn_cart',     JSON.stringify(cart))     }, [cart])
+  useEffect(() => { localStorage.setItem('mn_orders',   JSON.stringify(orders))   }, [orders])
 
   const login  = (name, email) => setUser({ name, email })
-  const logout = () => {
-    setUser(null)
-    setWishlist([])
-    setCart([])
-  }
+  const logout = () => { setUser(null); setWishlist([]); setCart([]) }
 
   const toggleWishlist = (product) => {
     if (!user) return false
@@ -58,11 +56,26 @@ export function AppProvider({ children }) {
     return true
   }
 
+  const placeOrder = () => {
+    if (!cart.length) return null
+    const order = {
+      id: `MYN${Date.now()}`,
+      date: new Date().toLocaleDateString('en-IN'),
+      items: [...cart],
+      total: cart.reduce((s, i) => s + i.discounted * i.qty, 0),
+      status: 'Confirmed'
+    }
+    setOrders(prev => [order, ...prev])
+    setCart([])
+    return order.id
+  }
+
   return (
     <AppContext.Provider value={{
       user, login, logout,
       wishlist, toggleWishlist, isWishlisted,
-      cart, addToCart, removeFromCart, changeQty, moveToCart
+      cart, addToCart, removeFromCart, changeQty, moveToCart,
+      orders, placeOrder
     }}>
       {children}
     </AppContext.Provider>
